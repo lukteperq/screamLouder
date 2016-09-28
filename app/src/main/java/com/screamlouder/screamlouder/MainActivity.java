@@ -14,15 +14,6 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 // https://developer.android.com/reference/android/media/AudioRecord.Builder.html
-    AudioRecord recorder = new AudioRecord.Builder()
-            .setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION)
-            .setAudioFormat(new AudioFormat.Builder()
-                    .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-                    .setSampleRate(32000)
-                    .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
-                    .build())
-            .setBufferSize(2*minBuffSize)
-            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
