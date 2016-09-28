@@ -17,6 +17,19 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
-        android:text="ScreamLouder" />
+        android:text="ScreamLouder"
+        android:id="@+id/textView" />
+
+    <Button
+        android:text="skjiitsekk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="28dp"
+        android:id="@+id/button" />
 
 </RelativeLayout>
