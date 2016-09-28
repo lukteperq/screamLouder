@@ -12,14 +12,6 @@
     tools:context="com.screamlouder.screamlouder.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:text="ScreamLouder"
-        android:id="@+id/textView" />
-
     <Button
         android:text="skjiitsekk"
         android:layout_width="wrap_content"
@@ -31,5 +23,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="28dp"
         android:id="@+id/button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="ScreamLouder"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

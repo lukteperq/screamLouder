@@ -1,5 +1,7 @@
 package com.screamlouder.screamlouder;
 
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,17 +13,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
-    MediaRecorder recorder = new MediaRecorder();
-    recorder.AudioSource(MediaRecorder.AudioSource.MIC);
-    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-    recorder.setOutputFile(PATH_NAME);
-    recorder.prepare();
-    recorder.start();   // Recording is now started
-    recorder.stop();
-    recorder.reset();   // You can reuse the object by going back to setAudioSource() step
-    recorder.release(); // Now the object cannot be reused
+// https://developer.android.com/reference/android/media/AudioRecord.Builder.html
+    AudioRecord recorder = new AudioRecord.Builder()
+            .setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION)
+            .setAudioFormat(new AudioFormat.Builder()
+                    .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                    .setSampleRate(32000)
+                    .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
+                    .build())
+            .setBufferSize(2*minBuffSize)
+            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
