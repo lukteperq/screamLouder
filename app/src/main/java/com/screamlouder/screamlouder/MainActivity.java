@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRecording = false;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         bufferSize = AudioRecord.getMinBufferSize(8000,
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
-            //CHANNEL_CONFIGURAATION_MONO Depracated
+        //CHANNEL_CONFIGURAATION_MONO Depracated
+    }
 
 
     private void setButtonHandlers() {
@@ -269,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
-
 }
+
+
+
