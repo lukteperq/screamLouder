@@ -23,6 +23,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 // https://developer.android.com/reference/android/media/AudioRecord.Builder.html
+// http://stackoverflow.com/questions/8499042/android-audiorecord-example
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -92,9 +93,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRecording() {
+        Log.i("information", "før");
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, bufferSize);
-
+        Log.i("information", "etter");
         int i = recorder.getState();
         if (i == 1)
             recorder.startRecording();
@@ -255,7 +257,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btnStart: {
                     AppLog.logString("Start Recording");
                     enableButtons(true);
+
                     startRecording();
+
 
                     break;
                 }
