@@ -93,10 +93,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRecording() {
-        Log.i("information", "før");
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, bufferSize);
-        Log.i("information", "etter");
         int i = recorder.getState();
         if (i == 1)
             recorder.startRecording();
