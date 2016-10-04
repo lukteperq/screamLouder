@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +25,9 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 // https://developer.android.com/reference/android/media/AudioRecord.Builder.html
 // http://stackoverflow.com/questions/8499042/android-audiorecord-example
+    //http://stackoverflow.com/questions/31305163/getmaxamplitude-always-returns-0
+
+    TextView dbResult;
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
+        TextView dbResult = (TextView) findViewById(R.id.dbResult);
 
         setButtonHandlers();
         enableButtons(false);
@@ -107,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, "AudioRecorder Thread");
         recordingThread.start();
+
+        //int amplitude = recorder.getMaxAmplitude();
     }
 
     private void writeAudioDataToFile() {
@@ -124,6 +131,22 @@ public class MainActivity extends AppCompatActivity {
         if (null != os) {
             while (isRecording) {
                 read = recorder.read(data, 0, bufferSize);
+
+
+
+                //Insert code for getting maxAmplitude and printing to dbResult
+
+
+                int amplitude = (data[0] & 0xff) << 8 | data[1];
+
+                // Determine amplitude
+                double amplitudeDb = 20 * Math.log10((double)Math.abs(amplitude) / 32768);
+                Log.i("test", String.valueOf(amplitudeDb));
+                //print to dbResult
+
+                //String res = String.valueOf(amplitudeDb);
+                //dbResult.setText(res);
+
 
                 if (AudioRecord.ERROR_INVALID_OPERATION != read) {
                     try {
