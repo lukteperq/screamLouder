@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
         android:id="@+id/dbResult"
-        android:textSize="20dip" />
+        android:textSize="20dip"
+        tools:text="Max Amplitude" />
 
     <LinearLayout
         android:layout_width="fill_parent"
