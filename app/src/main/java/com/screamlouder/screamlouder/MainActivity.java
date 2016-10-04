@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 // https://developer.android.com/reference/android/media/AudioRecord.Builder.html
 // http://stackoverflow.com/questions/8499042/android-audiorecord-example
     //http://stackoverflow.com/questions/31305163/getmaxamplitude-always-returns-0
+    //http://stackoverflow.com/questions/21119846/amplitude-from-audiorecord
 
     TextView dbResult;
 
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 //print to dbResult
 
                 String res = Double.toString(Math.floor(amplitudeDb));
+
                 //dbResult.setText(res);
 
 
