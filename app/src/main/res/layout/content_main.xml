@@ -13,24 +13,40 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
         android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.0"
+        android:layout_weight="0.02"
         android:text="@string/app_info"
         android:textSize="20dip" />
 
     <TextView
+        android:text="Current DB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.0"
         android:id="@+id/dbResult"
         android:textSize="20dip"
         tools:text="Max Amplitude" />
+
+    <TextView
+        android:text="Max DB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxDb" />
 
     <LinearLayout
         android:layout_width="fill_parent"

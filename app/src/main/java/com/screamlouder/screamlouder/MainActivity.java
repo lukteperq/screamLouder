@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     //http://stackoverflow.com/questions/15685752/how-to-use-an-android-handler-to-update-a-textview-in-the-ui-thread
 
     TextView dbResult;
+    TextView maxDb;
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final static int DO_UPDATE_TEXT = 0;
     private final static int DO_THAT = 1;
+    int max = 0;
     /*
     private final Handler myHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -77,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         dbResult = (TextView) findViewById(R.id.dbResult);
+        maxDb = (TextView) findViewById(R.id.maxDb);
         dbResult.setText("heiosann");
+        maxDb.setText("maxVolume");
 
         setButtonHandlers();
         enableButtons(false);
@@ -164,34 +168,43 @@ public class MainActivity extends AppCompatActivity {
         if (null != os) {
             while (isRecording) {
                 read = recorder.read(data, 0, bufferSize);
-
-
-
                 //Insert code for getting maxAmplitude and printing to dbResult
 
 
-                int amplitude = (data[0] & 0xff) << 8 | data[1];
 
+                //int amplitude = (data[0] & 0xff) << 8 | data[1];
                 // Determine amplitude
-                double amplitudeDb = 20 * Math.log10((double)Math.abs(amplitude) / 32768);
-                Log.i("test", String.valueOf(amplitudeDb));
-                //print to dbResult
+                //double amplitudeDb = 20 * Math.log10((double)Math.abs(amplitude) / 32768);
+                //Log.i("test", String.valueOf(amplitudeDb));
 
-                final String res = Double.toString(Math.floor(Math.abs(amplitudeDb)));
 
-                String average = null;
+
+
+                String maxValue="";
+                //final String res = Double.toString(Math.floor(amplitudeDb));
+
+                String input = "";
+                int curMax = 0;
                 for (short s : data) {
-                    average = String.valueOf(Math.abs(s));
+                    curMax = Math.abs(s);
+                    if(curMax > max){
+                        max = curMax;
+                    }
+                    input = String.valueOf(curMax);
+                    //Log.i("info", String.valueOf(s));
                 }
+                maxValue = String.valueOf(max);
 
                 //dbResult.setText(res);
                 //doUpdate();
-                final String finalAverage = average;
+                final String finalInput = input;
+                final String finalMaxValue = maxValue;
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                      dbResult.setText(finalAverage);
-
+                        //print to dbResult
+                        dbResult.setText(finalInput);
+                        maxDb.setText(finalMaxValue);
                     }
                 });
 
@@ -318,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
 
         out.write(header, 0, 44);
     }
+
 
     private View.OnClickListener btnClick = new View.OnClickListener() {
         @Override
