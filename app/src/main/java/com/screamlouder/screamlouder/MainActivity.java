@@ -179,12 +179,18 @@ public class MainActivity extends AppCompatActivity {
 
                 final String res = Double.toString(Math.floor(Math.abs(amplitudeDb)));
 
+                String average = null;
+                for (short s : data) {
+                    average = String.valueOf(Math.abs(s));
+                }
+
                 //dbResult.setText(res);
                 //doUpdate();
+                final String finalAverage = average;
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                      dbResult.setText(res);
+                      dbResult.setText(finalAverage);
 
                     }
                 });
