@@ -5,6 +5,8 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 // http://stackoverflow.com/questions/8499042/android-audiorecord-example
     //http://stackoverflow.com/questions/31305163/getmaxamplitude-always-returns-0
     //http://stackoverflow.com/questions/21119846/amplitude-from-audiorecord
+    //http://stackoverflow.com/questions/15685752/how-to-use-an-android-handler-to-update-a-textview-in-the-ui-thread
 
     TextView dbResult;
 
@@ -43,6 +46,29 @@ public class MainActivity extends AppCompatActivity {
     private Thread recordingThread = null;
     private boolean isRecording = false;
 
+    private Handler handler;
+
+    private final static int DO_UPDATE_TEXT = 0;
+    private final static int DO_THAT = 1;
+    /*
+    private final Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            final int what = msg.what;
+            switch(what) {
+                case DO_UPDATE_TEXT: doUpdate(); break;
+                case DO_THAT: doThat(); break;
+            }
+        }
+    };
+    */
+
+    private void doUpdate() {
+        dbResult.setText("I've been updated.");
+    }
+
+    private void doThat() {
+        dbResult.setText("I've not been updated.");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
         //CHANNEL_CONFIGURAATION_MONO Depracated
+        handler = new Handler(); // write in onCreate function
+
+        //below piece of code is written in function of class that extends from AsyncTask
+
+
     }
 
 
@@ -146,9 +177,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("test", String.valueOf(amplitudeDb));
                 //print to dbResult
 
-                String res = Double.toString(Math.floor(amplitudeDb));
+                final String res = Double.toString(Math.floor(Math.abs(amplitudeDb)));
 
                 //dbResult.setText(res);
+                //doUpdate();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                      dbResult.setText(res);
+
+                    }
+                });
 
 
                 if (AudioRecord.ERROR_INVALID_OPERATION != read) {
