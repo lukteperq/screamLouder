@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
         maxDb = (TextView) findViewById(R.id.maxDb);
         dbResult.setText("heiosann");
         maxDb.setText("maxVolume");
+
+        ((Button) findViewById(R.id.btnStop)).setVisibility(View.INVISIBLE);
+
 /*
         Intent i = getIntent();
         nameField.setText(i.getStringExtra("nameInfo"));
@@ -154,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }, "AudioRecorder Thread");
         recordingThread.start();
+
+        ((Button) findViewById(R.id.btnStart)).setVisibility(View.INVISIBLE);
+        ((Button) findViewById(R.id.btnStop)).setVisibility(View.VISIBLE);
 
         //int amplitude = recorder.getMaxAmplitude();
     }
@@ -244,6 +251,10 @@ public class MainActivity extends AppCompatActivity {
 
         copyWaveFile(getTempFilename(), getFilename());
         deleteTempFile();
+        Toast.makeText(getApplicationContext(), "Recording Saved",Toast.LENGTH_LONG).show();
+        ((Button) findViewById(R.id.btnStart)).setVisibility(View.VISIBLE);
+        ((Button) findViewById(R.id.btnStop)).setVisibility(View.INVISIBLE);
+
     }
 
     private void deleteTempFile() {
