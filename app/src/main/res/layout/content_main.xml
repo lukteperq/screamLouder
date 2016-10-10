@@ -1,81 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/blackBackground"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.screamlouder.screamlouder.MainActivity"
-    tools:showIn="@layout/activity_main"
-    android:background="@color/blackBackground">
+    tools:showIn="@layout/activity_main">
 
     <ImageView
-        android:layout_width="fill_parent"
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:scaleType="fitCenter"
         android:src="@drawable/logo" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.02"
-        android:text="@string/app_info"
-        android:textSize="20dip"
-        android:textColor="@color/whiteText"/>
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/logo"
+        android:text="@string/main_info"
+        android:layout_centerInParent="true"
+        android:textColor="@color/whiteText"
+        android:textSize="20dip" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_button"
+        android:text="@string/stop_recording" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_button"
+        android:text="@string/start_recording" />
 
     <TextView
-        android:text="Current DB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textColor="@color/whiteText"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/dbResult"
+        android:text="Current DB"
+        android:textColor="@color/whiteText" />
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/dbResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:textColor="@color/whiteText"
         android:textSize="20dip"
-        tools:text="Max Amplitude"
-        android:textColor="@color/whiteText"/>
+        tools:text="Max Amplitude" />
 
     <TextView
-        android:text="Max DB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        android:textColor="@color/whiteText"/>
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/maxDb" />
+        android:layout_above="@id/maxDb"
+        android:text="Max DB"
+        android:textColor="@color/whiteText" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/maxDb"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
 
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:text="@string/start_recording"
-            android:background="@color/redButton"
-            />
-
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:text="@string/stop_recording"
-            android:background="@color/redButton"/>
-    </LinearLayout>
-
-
-</LinearLayout>
 
