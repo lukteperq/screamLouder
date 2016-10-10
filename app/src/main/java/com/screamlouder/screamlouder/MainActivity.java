@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView dbResult;
     TextView maxDb;
+    //TextView nameField;
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -83,7 +84,10 @@ public class MainActivity extends AppCompatActivity {
         maxDb = (TextView) findViewById(R.id.maxDb);
         dbResult.setText("heiosann");
         maxDb.setText("maxVolume");
-
+/*
+        Intent i = getIntent();
+        nameField.setText(i.getStringExtra("nameInfo"));
+*/
         setButtonHandlers();
         enableButtons(false);
         bufferSize = AudioRecord.getMinBufferSize(8000,
@@ -91,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 AudioFormat.ENCODING_PCM_16BIT);
         //CHANNEL_CONFIGURAATION_MONO Depracated
         handler = new Handler(); // write in onCreate function
-
-        Intent i = getIntent();
-        Log.i("nameInfo", (i.getStringExtra("nameInfo")));
 
         //below piece of code is written in function of class that extends from AsyncTask
 
