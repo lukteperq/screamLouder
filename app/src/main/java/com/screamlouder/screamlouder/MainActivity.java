@@ -1,5 +1,7 @@
 package com.screamlouder.screamlouder;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -138,12 +140,46 @@ public class MainActivity extends AppCompatActivity {
             }
         }, "AudioRecorder Thread");
         recordingThread.start();
-
+/*
         ((Button) findViewById(R.id.btnStart)).setVisibility(View.INVISIBLE);
         ((Button) findViewById(R.id.btnStop)).setVisibility(View.VISIBLE);
+*/
 
-        //int amplitude = recorder.getMaxAmplitude();
+        animateView((Button)findViewById(R.id.btnStart),true);
+        animateView((Button)findViewById(R.id.btnStop),false);
+
+
     }
+
+    public void animateView(final View view, boolean in){
+        float animIn = 1.0f;
+        float animOut = 0.0f;
+        if(in){
+            view.animate()
+                    .alpha(animOut)
+                    .setDuration(300)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.INVISIBLE);
+                        }
+                    });
+        }else{
+            view.animate()
+                    .alpha(animIn)
+                    .setDuration(300)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.VISIBLE);
+                        }
+                    });
+        }
+
+    }//animateView()
+
 
     private void writeAudioDataToFile() {
         byte data[] = new byte[bufferSize];
@@ -232,8 +268,10 @@ public class MainActivity extends AppCompatActivity {
         copyWaveFile(getTempFilename(), getFilename());
         deleteTempFile();
         Toast.makeText(getApplicationContext(), "Recording Saved",Toast.LENGTH_LONG).show();
-        ((Button) findViewById(R.id.btnStart)).setVisibility(View.VISIBLE);
-        ((Button) findViewById(R.id.btnStop)).setVisibility(View.INVISIBLE);
+        //((Button) findViewById(R.id.btnStart)).setVisibility(View.VISIBLE);
+        //((Button) findViewById(R.id.btnStop)).setVisibility(View.INVISIBLE);
+        animateView((Button)findViewById(R.id.btnStart),false);
+        animateView((Button)findViewById(R.id.btnStop),true); //Woop woop
 
     }
 
