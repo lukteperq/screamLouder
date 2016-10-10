@@ -1,5 +1,6 @@
 package com.screamlouder.screamlouder;
 
+import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 AudioFormat.ENCODING_PCM_16BIT);
         //CHANNEL_CONFIGURAATION_MONO Depracated
         handler = new Handler(); // write in onCreate function
+
+        Intent i = getIntent();
+        Log.i("nameInfo", (i.getStringExtra("nameInfo")));
 
         //below piece of code is written in function of class that extends from AsyncTask
 
