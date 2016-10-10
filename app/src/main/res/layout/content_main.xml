@@ -47,7 +47,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/dbResult"
+        android:layout_above="@+id/dbResult"
         android:text="Current DB"
         android:textColor="@color/whiteText" />
 
@@ -64,7 +64,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/maxDb"
+        android:layout_above="@+id/maxDb"
         android:text="Max DB"
         android:textColor="@color/whiteText" />
 
