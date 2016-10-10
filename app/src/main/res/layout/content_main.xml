@@ -27,6 +27,16 @@
         android:textColor="@color/whiteText"
         android:textSize="20dip" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/nameField"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/logo"
+        android:layout_centerInParent="true"
+        android:textColor="@color/whiteText"
+        android:textSize="20dip" />
+
     <Button
         android:id="@+id/btnStop"
         android:layout_width="wrap_content"
@@ -70,7 +80,7 @@
 
     <TextView
         android:id="@+id/maxDb"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>

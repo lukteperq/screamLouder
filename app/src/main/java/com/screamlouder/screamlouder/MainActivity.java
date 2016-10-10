@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView dbResult;
     TextView maxDb;
-    //TextView nameField;
+    TextView nameField;
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -55,25 +55,6 @@ public class MainActivity extends AppCompatActivity {
     private final static int DO_UPDATE_TEXT = 0;
     private final static int DO_THAT = 1;
     int max = 0;
-    /*
-    private final Handler myHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            final int what = msg.what;
-            switch(what) {
-                case DO_UPDATE_TEXT: doUpdate(); break;
-                case DO_THAT: doThat(); break;
-            }
-        }
-    };
-    */
-
-    private void doUpdate() {
-        dbResult.setText("I've been updated.");
-    }
-
-    private void doThat() {
-        dbResult.setText("I've not been updated.");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,24 +64,23 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
         dbResult = (TextView) findViewById(R.id.dbResult);
         maxDb = (TextView) findViewById(R.id.maxDb);
-        dbResult.setText("heiosann");
-        maxDb.setText("maxVolume");
+        dbResult.setText("-");
+        maxDb.setText("-");
+        nameField = (TextView) findViewById(R.id.nameField);
 
         ((Button) findViewById(R.id.btnStop)).setVisibility(View.INVISIBLE);
 
-/*
+
         Intent i = getIntent();
         nameField.setText(i.getStringExtra("nameInfo"));
-*/
+
         setButtonHandlers();
         enableButtons(false);
         bufferSize = AudioRecord.getMinBufferSize(8000,
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
         //CHANNEL_CONFIGURAATION_MONO Depracated
-        handler = new Handler(); // write in onCreate function
-
-        //below piece of code is written in function of class that extends from AsyncTask
+        handler = new Handler();
 
 
     }
