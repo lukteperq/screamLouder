@@ -94,7 +94,7 @@ public class WallOfFame extends AppCompatActivity {
         });
 
 
-
+/*
         String filepath = Environment.getExternalStorageDirectory().getPath();
         File file = new File(filepath, AUDIO_RECORDER_FOLDER);
 
@@ -123,7 +123,7 @@ public class WallOfFame extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
         //new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
         wallOfFame.setAdapter(arrayAdapter);
-
+*/
 
     }//onCreate()
 
