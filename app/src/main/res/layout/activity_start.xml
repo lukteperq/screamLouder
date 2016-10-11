@@ -52,9 +52,8 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.02"
             android:text="@string/app_info"
-            android:textSize="20dip"
+            android:textSize="20sp"
             android:textColor="@color/whiteText"
             android:layout_marginBottom="33dp"
             android:layout_above="@+id/textView3"
