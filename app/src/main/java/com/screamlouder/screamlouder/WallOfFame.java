@@ -13,11 +13,13 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WallOfFame extends AppCompatActivity {
 
     private static final String AUDIO_RECORDER_FOLDER = "screamLouder";
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
+    private static final String FILE_SEPARATOR = "/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,26 +28,15 @@ public class WallOfFame extends AppCompatActivity {
 
         ListView wallOfFame = (ListView) findViewById(R.id.wallOfFame);
         TextView skjiit = (TextView)findViewById(R.id.skjiit);
-        Log.i("infor", "heisann");
 
         //final ArrayList<String> files = new ArrayList<String>();
 
-        File directory = new File(AUDIO_RECORDER_FOLDER);
-        File[] contents = directory.listFiles();
-        skjiit.setText("start");
-        if (directory.isDirectory()) {
+/*
+        String filepath = Environment.getExternalStorageDirectory().getPath();
+        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
+        */
+        //List<File> files = getListFiles(new File(Environment.getExternalStorageDirectory().getPath()));
 
-
-            String[] files = directory.list();
-            if (files.length == 0) {
-                //directory is empty
-                Log.i("info", "empty");
-            }else{
-                Log.i("info", "Not empty");
-            }
-        }else{
-            Log.i("infor", "Not directory");
-        }
 
 
 
@@ -83,6 +74,23 @@ public class WallOfFame extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+
+
+    private int readLogList( String filePath )
+    {
+        File directory = Environment.getExternalStorageDirectory();
+
+        File folder = new File( directory + FILE_SEPARATOR + filePath );
+
+        if ( !folder.exists() )
+        {
+            return 0;
+        }
+
+        return  folder.list().length;
     }
 
 
