@@ -19,9 +19,6 @@ public class startActivity extends AppCompatActivity {
         nameInput = (EditText) findViewById(R.id.nameInput);
         buttonInput = (Button) findViewById(R.id.buttonInput);
 
-        Intent intent = new Intent(this,WallOfFame.class);
-        startActivity(intent);
-
     }
 
     public void changeView(View view){
