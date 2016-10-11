@@ -38,8 +38,7 @@ public class WallOfFame extends AppCompatActivity {
 
         final String path = Environment.getExternalStorageDirectory()+FILE_SEPARATOR+AUDIO_RECORDER_FOLDER;
         //Log.i("info", path);
-        TextView skjiit = (TextView)findViewById(R.id.skjiit);
-        //skjiit.setText(path);
+  
 
         File f = new File(path);
         /*
