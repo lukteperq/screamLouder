@@ -16,6 +16,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/wallOfFame"
-        android:textColor="@color/whiteText"/>
+        android:background="@color/whiteText" />
 
 </RelativeLayout>
