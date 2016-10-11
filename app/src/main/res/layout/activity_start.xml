@@ -38,6 +38,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/nameInput"
+            android:labelFor="@+id/nameInput"
             android:textColor="@android:color/white"
             android:background="@color/redButton"
             android:layout_above="@+id/buttonInput"
