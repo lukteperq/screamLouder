@@ -20,7 +20,6 @@ public class startActivity extends AppCompatActivity {
         buttonInput = (Button) findViewById(R.id.buttonInput);
 
         Intent intent = new Intent(this,WallOfFame.class);
-        startActivity(intent);
 
     }
 
