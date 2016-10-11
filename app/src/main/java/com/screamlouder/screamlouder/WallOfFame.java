@@ -16,13 +16,26 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @author Øyvind Grimstad
+ * @author Vegard Brestad
+ * @author Erik Mikalsen
+ * Date: 11.10-2016
+ * Description: A simple app that records and displays the current volume input measured in Decibel.
+ */
+
 public class WallOfFame extends AppCompatActivity {
 
+    //Classvariables
     private static final String AUDIO_RECORDER_FOLDER = "screamLouder";
-    private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
     private static final String FILE_SEPARATOR = "/";
     MediaPlayer mp = new MediaPlayer();
 
+    /**
+     *
+     * @param savedInstanceState
+     * initializes the ListView with all the files/recordings, and initialize a mediaplayer so you can hear the recording when a recording is clicked
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
