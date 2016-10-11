@@ -54,7 +54,7 @@ public class WallOfFame extends AppCompatActivity {
         for(int i = 0; i < file.length; i++){
             files.add((file[i].getName().toString()));
         }
-/*
+
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, files);
         wallOfFame.setAdapter(arrayAdapter);
 
@@ -124,7 +124,7 @@ public class WallOfFame extends AppCompatActivity {
         //new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
         wallOfFame.setAdapter(arrayAdapter);
 
-*/
+
     }//onCreate()
 
     @Override
