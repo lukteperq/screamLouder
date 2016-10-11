@@ -27,19 +27,22 @@ public class WallOfFame extends AppCompatActivity {
         setContentView(R.layout.activity_wall_of_fame);
 
         ListView wallOfFame = (ListView) findViewById(R.id.wallOfFame);
-        TextView skjiit = (TextView)findViewById(R.id.skjiit);
+        //TextView skjiit = (TextView)findViewById(R.id.skjiit);
 
         String path = Environment.getExternalStorageDirectory().toString()+FILE_SEPARATOR+AUDIO_RECORDER_FOLDER;
-        Log.i("info", path);
+        //Log.i("info", path);
 
         File f = new File(path);
         File file[] = f.listFiles();
+        ArrayList<String> files = new ArrayList<String>();
 
         for(int i = 0; i < file.length; i++){
-            Log.i("arr", file[i].toString());
+            files.add((file[i].getName().toString()));
         }
 
-        //final ArrayList<String> files = new ArrayList<String>();
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, files);
+        wallOfFame.setAdapter(arrayAdapter);
+
 
 /*
         String filepath = Environment.getExternalStorageDirectory().getPath();
