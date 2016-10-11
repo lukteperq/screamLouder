@@ -44,19 +44,13 @@ public class MainActivity extends AppCompatActivity {
     private int bufferSize = 0;
     private Thread recordingThread = null;
     private boolean isRecording = false;
-
     private Handler handler;
-
-    private final static int DO_UPDATE_TEXT = 0;
-    private final static int DO_THAT = 1;
     int max = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         dbResult = (TextView) findViewById(R.id.dbResult);
         maxDb = (TextView) findViewById(R.id.maxDb);
         dbResult.setText("-");
@@ -74,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
         bufferSize = AudioRecord.getMinBufferSize(8000,
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
-        //CHANNEL_CONFIGURAATION_MONO Depracated
         handler = new Handler();
 
 
     }
-
 
     private void setButtonHandlers() {
         ((Button) findViewById(R.id.btnStart)).setOnClickListener(btnClick);
@@ -191,19 +183,12 @@ public class MainActivity extends AppCompatActivity {
                 read = recorder.read(data, 0, bufferSize);
                 //Insert code for getting maxAmplitude and printing to dbResult
 
-
-
                 //int amplitude = (data[0] & 0xff) << 8 | data[1];
                 // Determine amplitude
                 //double amplitudeDb = 20 * Math.log10((double)Math.abs(amplitude) / 32768);
                 //Log.i("test", String.valueOf(amplitudeDb));
 
-
-
-
                 String maxValue="";
-                //final String res = Double.toString(Math.floor(amplitudeDb));
-
                 String input = "";
                 int curMax = 0;
                 for (short s : data) {
@@ -212,12 +197,9 @@ public class MainActivity extends AppCompatActivity {
                         max = curMax;
                     }
                     input = String.valueOf(curMax);
-                    //Log.i("info", String.valueOf(s));
                 }
                 maxValue = String.valueOf(max);
 
-                //dbResult.setText(res);
-                //doUpdate();
                 final String finalInput = input;
                 final String finalMaxValue = maxValue;
                 handler.post(new Runnable() {
@@ -373,15 +355,12 @@ public class MainActivity extends AppCompatActivity {
                     enableButtons(true);
 
                     startRecording();
-
-
                     break;
                 }
                 case R.id.btnStop: {
                     AppLog.logString("Start Recording");
                     enableButtons(false);
                     stopRecording();
-
                     break;
                 }
             }

@@ -12,15 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class WallOfFame extends AppCompatActivity {
 
@@ -37,8 +31,6 @@ public class WallOfFame extends AppCompatActivity {
         ListView wallOfFame = (ListView) findViewById(R.id.wallOfFame);
 
         final String path = Environment.getExternalStorageDirectory()+FILE_SEPARATOR+AUDIO_RECORDER_FOLDER;
-        //Log.i("info", path);
-  
 
         File f = new File(path);
         /*
@@ -51,7 +43,7 @@ public class WallOfFame extends AppCompatActivity {
         ArrayList<String> files = new ArrayList<String>();
 
         for(int i = 0; i < file.length; i++){
-            files.add((file[i].getName().toString()));
+            files.add((file[i].getName())); //files.add((file[i].getName().toString())); redundant
         }
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, files);
@@ -64,65 +56,15 @@ public class WallOfFame extends AppCompatActivity {
                 Log.i("info", parent.getAdapter().getItem(position).toString());
                 try {
                     Uri myUri = Uri.parse(path +"/"+parent.getAdapter().getItem(position).toString());
-
                     mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
                     mp.setDataSource(getApplicationContext(), myUri);
-
                     mp.prepare();
-
                     mp.start();
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //mp.stop();
-
-
-
-
-
-
-
-
-
-
-
-                //Toast.makeText(getBaseContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-/*
-        String filepath = Environment.getExternalStorageDirectory().getPath();
-        File file = new File(filepath, AUDIO_RECORDER_FOLDER);
-
-        //List<File> files = getListFiles(new File(Environment.getExternalStorageDirectory().getPath()));
-
-
-
-
-
-        final ArrayList<String> people = new ArrayList<String>(); //final pga skal brukes i annen class
-        people.add("Wall of Fame");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, people);
-        wallOfFame.setAdapter(arrayAdapter);
-
-
-
-        File dir = new File("screamLouder");
-        File[] filelist = dir.listFiles();
-
-        String[] theNamesOfFiles = new String[filelist.length];
-
-        for (int i = 0; i < theNamesOfFiles.length; i++) {
-            theNamesOfFiles[i] = filelist[i].getName();
-        }
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
-        //new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
-        wallOfFame.setAdapter(arrayAdapter);
-*/
+            }//onItemClick()
+        });//setOnItemClickListener()
 
     }//onCreate()
 
@@ -135,6 +77,15 @@ public class WallOfFame extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }//onOptionsItemSelected()
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mp != null) {
+            mp.stop();
+            mp = null;
+        }
+    }//onPause()
 
 }//class()

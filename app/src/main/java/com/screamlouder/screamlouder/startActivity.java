@@ -19,12 +19,12 @@ public class startActivity extends AppCompatActivity {
         nameInput = (EditText) findViewById(R.id.nameInput);
         buttonInput = (Button) findViewById(R.id.buttonInput);
 
-    }
+    }//onCreate()
 
     public void changeView(View view){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         i.putExtra("nameInfo", nameInput.getText().toString());
         startActivity(i);
-    }
+    }//changeView()
 
-}
+}//class
