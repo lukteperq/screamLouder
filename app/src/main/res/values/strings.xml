@@ -5,4 +5,5 @@
     <string name="start_recording">Start</string>
     <string name="stop_recording">Stopp</string>
     <string name="app_disclaimer">Utviklerene av denne applikasjonen er ikke ansvarlig for konsekvensene ved bruk av denne applikasjonen. Ved å trykke "Scream" sier du deg enig i dette.</string>
+    <string name="btn_history">History</string>
 </resources>

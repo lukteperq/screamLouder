@@ -84,6 +84,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:textColor="@color/whiteText"/>
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/redButton"
+        android:text="@string/btn_history"
+        android:onClick="changeView"/>
 </RelativeLayout>
     <!--android:animateLayoutChanges="true"-->
 

@@ -9,14 +9,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -366,6 +359,10 @@ public class MainActivity extends AppCompatActivity {
         out.write(header, 0, 44);
     }
 
+    public void changeView(View view){
+        Intent i = new Intent(this,WallOfFame.class);
+        startActivity(i);
+    }
 
     private View.OnClickListener btnClick = new View.OnClickListener() {
         @Override
