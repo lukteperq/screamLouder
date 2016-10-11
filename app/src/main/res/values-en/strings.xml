@@ -10,4 +10,5 @@
     <string name="name">Name</string>
     <string name="maxdb">Max DB</string>
     <string name="currentdb">Current DB</string>
-</resources>
+    <string name="logo_description">Logo of a head screaming.</string>
+    </resources>

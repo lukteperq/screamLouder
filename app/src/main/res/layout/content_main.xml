@@ -14,7 +14,8 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:src="@mipmap/logo" />
+        android:src="@mipmap/logo"
+        android:contentDescription="@string/logo_description"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -10,5 +10,6 @@
     <string name="name">Navn</string>
     <string name="maxdb">Max DB</string>
     <string name="currentdb">Current DB</string>
+    <string name="logo_description">logo av et hodet med åpen munn som skriker.</string>
 
 </resources>
