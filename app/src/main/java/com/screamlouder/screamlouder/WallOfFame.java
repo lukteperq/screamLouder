@@ -29,6 +29,16 @@ public class WallOfFame extends AppCompatActivity {
         ListView wallOfFame = (ListView) findViewById(R.id.wallOfFame);
         TextView skjiit = (TextView)findViewById(R.id.skjiit);
 
+        String path = Environment.getExternalStorageDirectory().toString()+FILE_SEPARATOR+AUDIO_RECORDER_FOLDER;
+        Log.i("info", path);
+
+        File f = new File(path);
+        File file[] = f.listFiles();
+
+        for(int i = 0; i < file.length; i++){
+            Log.i("arr", file[i].toString());
+        }
+
         //final ArrayList<String> files = new ArrayList<String>();
 
 /*
