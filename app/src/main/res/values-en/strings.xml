@@ -6,4 +6,8 @@
     <string name="stop_recording">Stop</string>
     <string name="app_disclaimer">The developers of this application is not responsible for any consequences that may occur from using this app. By pressing "Scream" you are agreeing to these terms.  </string>
     <string name="btn_history">History</string>
+    <string name="scream">SCREAM</string>
+    <string name="name">Name</string>
+    <string name="maxdb">Max DB</string>
+    <string name="currentdb">Current DB</string>
 </resources>

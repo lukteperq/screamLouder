@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/dbResult"
-        android:text="Current DB"
+        android:text="@string/currentdb"
         android:textColor="@color/whiteText" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/maxDb"
-        android:text="Max DB"
+        android:text="@string/maxdb"
         android:textColor="@color/whiteText" />
 
     <TextView
